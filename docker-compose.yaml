@@ -1,0 +1,49 @@
+version: '3'
+ 
+services:
+
+    software-shinobi-scrum-mysql:
+
+        container_name: software-shinobi-scrum-mysql
+
+        image: mysql:8
+
+##        volumes:
+##
+##            - /tmp/container-volumes/mysql:/var/lib/mysql
+
+        ports:
+
+            - "3306:3306"
+
+        environment:
+
+            MYSQL_ROOT_PASSWORD: aggiepride
+
+            MYSQL_DATABASE: activity_manager
+
+            MYSQL_USER: activity_manager
+
+            MYSQL_PASSWORD: activity_manager
+
+    software-shinobi-scrum-phpmyadmin:
+
+        container_name: software-shinobi-scrum-phpmyadmin
+
+        image: beeyev/phpmyadmin-lightweight
+
+        links:
+
+           - software-shinobi-scrum-mysql
+
+        ports:
+
+            - 3380:80
+
+        environment:
+
+            PMA_HOST: software-shinobi-scrum-mysql
+
+            PMA_PORT: 3306
+
+            PMA_ARBITRARY: 1
