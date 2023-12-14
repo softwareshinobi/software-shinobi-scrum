@@ -27,6 +27,7 @@ public class ActivityTaskController {
         this.activityTaskService = activityTaskService;
 
     }
+    
     @GetMapping("/")
     public String displaydasbhoard(Model model, HttpServletRequest request) {
 
@@ -48,24 +49,12 @@ public class ActivityTaskController {
 
     }
     
-    @GetMapping("/manage-user-stories")
-    public String displaymanager(Model model, HttpServletRequest request) {
+    @GetMapping("/kanban-board")
+    public String viewCreationKanban(Model model, HttpServletRequest request) {
 
-        System.out.println("enter > creation-dashboard");
+        displaydasbhoard(model, null);
 
-        List<ActivityTask> activityTaskList = activityTaskService.getAllActivityTasks();
-
-        System.out.println("the list of activity task:");
-
-        System.out.println(activityTaskList);
-
-        model.addAttribute("activityTaskList", activityTaskList);
-
-        model.addAttribute("activityTask", new ActivityTask());
-
-        System.out.println("exit > creation-dashboard");
-
-        return "creation/creation-manager";
+        return "creation/creation-kanban";
 
     }
 
@@ -103,7 +92,7 @@ public class ActivityTaskController {
 
         }
 
-        displaymanager(model, null);
+        viewCreationKanban(model, null);
 
         return "creation/creation-manager";
 
@@ -141,16 +130,7 @@ public class ActivityTaskController {
 
         this.activityTaskService.delete(id);
 
-        displaymanager(model, null);
-
-        return "creation/home";
-
-    }
-
-    @GetMapping("/kanban-board")
-    public String viewCreationReporting(Model model, HttpServletRequest request) {
-
-        displaydasbhoard(model, null);
+        viewCreationKanban(model, null);
 
         return "creation/creation-kanban";
 
@@ -205,4 +185,28 @@ public class ActivityTaskController {
 //            model.addAttribute("error", "Login session expired");
 //            return "redirect:/user/loginForm";
 //        }
+
+
+
+
+    @GetMapping("/manage-user-stories")
+    public String displaymanager(Model model, HttpServletRequest request) {
+
+        System.out.println("enter > creation-dashboard");
+
+        List<ActivityTask> activityTaskList = activityTaskService.getAllActivityTasks();
+
+        System.out.println("the list of activity task:");
+
+        System.out.println(activityTaskList);
+
+        model.addAttribute("activityTaskList", activityTaskList);
+
+        model.addAttribute("activityTask", new ActivityTask());
+
+        System.out.println("exit > creation-dashboard");
+
+        return "creation/creation-kanban";
+
+    }
  */
