@@ -105,7 +105,7 @@ public class ActivityTaskController {
 
         displaymanager(model, null);
 
-        return "creation/home";
+        return "creation/creation-manager";
 
     }
 
@@ -130,7 +130,7 @@ public class ActivityTaskController {
 
             model.addAttribute("error", "creation not found for id: " + id);
 
-            return "creation/home";
+            return "creation/creation-manager";
 
         }
 
