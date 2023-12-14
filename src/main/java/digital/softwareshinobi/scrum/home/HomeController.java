@@ -30,7 +30,7 @@ public class HomeController {
 
     }
 
-    @GetMapping("/")
+    @GetMapping("/demo")
     public String goToDemo(Model model) {
 
         model.addAttribute("info", "Great");

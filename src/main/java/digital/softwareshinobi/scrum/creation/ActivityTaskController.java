@@ -27,11 +27,10 @@ public class ActivityTaskController {
         this.activityTaskService = activityTaskService;
 
     }
-
     @GetMapping("/")
-    public String displayHomeScreen(Model model, HttpServletRequest request) {
+    public String displaydasbhoard(Model model, HttpServletRequest request) {
 
-        System.out.println("enter > displayHomeScreen");
+        System.out.println("enter > creation-dashboard");
 
         List<ActivityTask> activityTaskList = activityTaskService.getAllActivityTasks();
 
@@ -43,13 +42,34 @@ public class ActivityTaskController {
 
         model.addAttribute("activityTask", new ActivityTask());
 
-        System.out.println("exit > displayHomeScreen");
+        System.out.println("exit > creation-dashboard");
 
-        return "creation/home";
+        return "creation/creation-dashboard";
+
+    }
+    
+    @GetMapping("/manage-user-stories")
+    public String displaymanager(Model model, HttpServletRequest request) {
+
+        System.out.println("enter > creation-dashboard");
+
+        List<ActivityTask> activityTaskList = activityTaskService.getAllActivityTasks();
+
+        System.out.println("the list of activity task:");
+
+        System.out.println(activityTaskList);
+
+        model.addAttribute("activityTaskList", activityTaskList);
+
+        model.addAttribute("activityTask", new ActivityTask());
+
+        System.out.println("exit > creation-dashboard");
+
+        return "creation/creation-manager";
 
     }
 
-    @GetMapping("/add-new")
+    @GetMapping("/add-new-user-story")
     public String addNewCreation(Model model, HttpServletRequest request) {
 
         model.addAttribute("activityTask", new ActivityTask());
@@ -83,7 +103,7 @@ public class ActivityTaskController {
 
         }
 
-        displayHomeScreen(model, null);
+        displaymanager(model, null);
 
         return "creation/home";
 
@@ -121,7 +141,7 @@ public class ActivityTaskController {
 
         this.activityTaskService.delete(id);
 
-        displayHomeScreen(model, null);
+        displaymanager(model, null);
 
         return "creation/home";
 
@@ -130,7 +150,7 @@ public class ActivityTaskController {
     @GetMapping("/creation-reporting")
     public String viewCreationReporting(Model model, HttpServletRequest request) {
 
-        displayHomeScreen(model, null);
+        displaydasbhoard(model, null);
 
         return "creation/creation-reporting";
 

@@ -1,12 +1,12 @@
+    <meta name="author" content="Software Shinobi">
+
+    <meta name="description" content="the agent eight dashboard">
+
+    <meta name="keywords" content="administrative admin dashboard">
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <meta name="description" content="au theme template">
-
-    <meta name="author" content="Hau Nguyen">
-
-    <meta name="keywords" content="au theme template">
 
     <link th:href="@{/css/font-face.css}" rel="stylesheet" />
 
