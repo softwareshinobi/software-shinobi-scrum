@@ -147,12 +147,12 @@ public class ActivityTaskController {
 
     }
 
-    @GetMapping("/creation-reporting")
+    @GetMapping("/kanban-board")
     public String viewCreationReporting(Model model, HttpServletRequest request) {
 
         displaydasbhoard(model, null);
 
-        return "creation/creation-reporting";
+        return "creation/creation-kanban";
 
     }
     
