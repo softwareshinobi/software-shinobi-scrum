@@ -12,34 +12,23 @@ temporaryReplaceStringEnd="44444"
 
 def replaceTemplateHTMLHead():
 
-    print("replaceTemplateHTMLHead")
+	templateSectionBegin="!-- html / head / css / begin -->"
 
-	templateSectionBegin="!-- template / html / head / begin -->"
+	templateSectionEnd="<!-- html / head / css / end -->"
 
-	templateSectionEnd="<!-- template / html / head / end -->"
+	with open('../.template-parts/html-head-css-end.part.template') as templateContentFile:
 
-	with open('../.template-parts/template-content.header') as templateContentFile:
 		contentToSubstituteIntoArea = templateContentFile.read()
-	##	print(contentToSubstituteIntoArea)
 
 	with open(fileToUpdate) as targetSubstitutionFile:
 		s = targetSubstitutionFile.read()
-		
-		##print("s: ")
-	##	print(s)
 
 	ddd=s
 
 	ddd=re.sub(templateSectionBegin, templateSectionBegin+temporaryReplaceStringBegin, ddd, flags=re.DOTALL)
 
 	ddd=re.sub(templateSectionEnd, temporaryReplaceStringEnd+templateSectionEnd, ddd, flags=re.DOTALL)
-
-##	print("ddd: ")
-##	print(ddd)
 	ddd=re.sub(temporaryReplaceStringBegin+".*"+temporaryReplaceStringEnd,contentToSubstituteIntoArea,ddd,flags=re.DOTALL)
-
-##	print("final: ")
-##	print(ddd)
 
 	f = open(fileToUpdate, "w")
 	
@@ -47,84 +36,32 @@ def replaceTemplateHTMLHead():
 	
 	f.close()
 
-def replaceTemplateContentMenu():
+def replaceTemplateBodySidebar():
 
-	templateSectionBegin="<!-- Template Menu // Begin -->"
+	templateSectionBegin="!-- html / body / menu / sidebar / begin -->"
 
-	templateSectionEnd="<!-- Template Menu // End -->"
+	templateSectionEnd="<!-- html / body / menu / sidebar / end -->"
 
-	temporaryReplaceStringBegin="22222"
+	with open('../.template-parts/html-head-css-end.part.template') as templateContentFile:
 
-	temporaryReplaceStringEnd="44444"
-
-	with open('../.template-parts/template-content.menu') as templateContentFile:
 		contentToSubstituteIntoArea = templateContentFile.read()
-	##	print(contentToSubstituteIntoArea)
 
 	with open(fileToUpdate) as targetSubstitutionFile:
 		s = targetSubstitutionFile.read()
-		
-	##	print("s: ")
-##		print(s)
 
 	ddd=s
 
 	ddd=re.sub(templateSectionBegin, templateSectionBegin+temporaryReplaceStringBegin, ddd, flags=re.DOTALL)
 
 	ddd=re.sub(templateSectionEnd, temporaryReplaceStringEnd+templateSectionEnd, ddd, flags=re.DOTALL)
-
-##	print("ddd: ")
-	##print(ddd)
-
 	ddd=re.sub(temporaryReplaceStringBegin+".*"+temporaryReplaceStringEnd,contentToSubstituteIntoArea,ddd,flags=re.DOTALL)
 
-##	print("final: ")
-##	print(ddd)
-
 	f = open(fileToUpdate, "w")
+	
 	f.write(ddd)
-	f.close()
-
-def replaceTemplateContentFooter():
-
-	templateSectionBegin="<!-- Footer // Begin -->"
-
-	templateSectionEnd="<!-- Footer // End -->"
-
-	temporaryReplaceStringBegin="22222"
-
-	temporaryReplaceStringEnd="44444"
-
-	with open('../.template-parts/template-content.footer') as templateContentFile:
-		contentToSubstituteIntoArea = templateContentFile.read()
-	##	print(contentToSubstituteIntoArea)
-
-	with open(fileToUpdate) as targetSubstitutionFile:
-		s = targetSubstitutionFile.read()
-		
-	##	print("s: ")
-		##print(s)
-
-	ddd=s
-
-	ddd=re.sub(templateSectionBegin, templateSectionBegin+temporaryReplaceStringBegin, ddd, flags=re.DOTALL)
-
-	ddd=re.sub(templateSectionEnd, temporaryReplaceStringEnd+templateSectionEnd, ddd, flags=re.DOTALL)
-
-	print("ddd: ")
-	print(ddd)
-
-	ddd=re.sub(temporaryReplaceStringBegin+".*"+temporaryReplaceStringEnd,contentToSubstituteIntoArea,ddd,flags=re.DOTALL)
-
-##	print("final: ")
-##	print(ddd)
-
-	f = open(fileToUpdate, "w")
-	f.write(ddd)
+	
 	f.close()
 
 replaceTemplateHTMLHead()
 
-replaceTemplateContentMenu()
-
-replaceTemplateContentFooter()
+replaceTemplateBodySidebar()

@@ -11,22 +11,30 @@ public class HomeController {
 
     @Autowired
     AccountRepository userRepository;
-    
 
     @Autowired
     public HomeController(AccountRepository userRepository) {
-       
+
         System.out.println("HomeController HomeController HomeController");
-       
-       this.userRepository = userRepository;
-              
+
+        this.userRepository = userRepository;
+
     }
 
     @GetMapping("/")
     public String goToIndex(Model model) {
-        
+
         model.addAttribute("info", "Great");
-        
+
+        return "index";
+
+    }
+
+    @GetMapping("/")
+    public String goToDemo(Model model) {
+
+        model.addAttribute("info", "Great");
+
         return "demo";
 
     }
