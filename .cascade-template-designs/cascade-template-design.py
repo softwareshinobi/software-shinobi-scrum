@@ -10,7 +10,9 @@ temporaryReplaceStringBegin="22222"
 
 temporaryReplaceStringEnd="44444"
 
-def replaceTemplateContentHeader():
+def replaceTemplateHTMLHead():
+
+    print("replaceTemplateHTMLHead")
 
 	templateSectionBegin="!-- template / html / head / begin -->"
 
@@ -121,7 +123,7 @@ def replaceTemplateContentFooter():
 	f.write(ddd)
 	f.close()
 
-replaceTemplateContentHeader()
+replaceTemplateHTMLHead()
 
 replaceTemplateContentMenu()
 
